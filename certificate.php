@@ -22,6 +22,8 @@ include __DIR__ . '/header.php';
 ?>
 
 <section class="inner-hero">
+    <img class="hero-media" src="<?php echo $baseUrl; ?>/images/hero-standard.jpg" alt="">
+    <div class="hero-overlay"></div>
     <div class="container">
         <h1>Certificate not found</h1>
         <p>We could not match that number to a published IFTA certificate.</p>

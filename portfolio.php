@@ -91,6 +91,8 @@ $sectors = [
 ?>
 
 <section class="inner-hero about-page-hero">
+    <img class="hero-media" src="<?php echo $baseUrl; ?>/images/hero-systems.jpg" alt="">
+    <div class="hero-overlay"></div>
     <div class="container">
         <p class="hero-kicker">Portfolio</p>
         <h1>Certification across<br>sectors and standards.</h1>

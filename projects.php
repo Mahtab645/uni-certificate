@@ -5,6 +5,8 @@ include __DIR__ . '/header.php';
 ?>
 
 <section class="inner-hero about-page-hero">
+    <img class="hero-media" src="<?php echo $baseUrl; ?>/images/hero-about.jpg" alt="">
+    <div class="hero-overlay"></div>
     <div class="container">
         <p class="hero-kicker">Projects</p>
         <h1>Research that<br>shapes progress.</h1>

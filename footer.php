@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="container footer-bottom">
-        <p>&copy; <?php echo date('Y'); ?> IFTA AG</p>
+        <p>&copy; <?php echo date('Y'); ?> IFTA AG · Hero photos from <a href="https://www.pexels.com" rel="noopener">Pexels</a></p>
         <div class="footer-legal">
             <a href="<?php echo $baseUrl; ?>/imprint.php">Imprint</a>
             <a href="<?php echo $baseUrl; ?>/privacy.php">Privacy</a>

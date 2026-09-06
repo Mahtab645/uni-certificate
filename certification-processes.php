@@ -5,7 +5,7 @@ include __DIR__ . '/header.php';
 ?>
 
 <section class="inner-hero">
-    <img class="hero-media" src="<?php echo $baseUrl; ?>/images/quality-testing.jpg" alt="Certification processes at IFTA AG">
+    <img class="hero-media" src="<?php echo $baseUrl; ?>/images/hero-processes.jpg" alt="Certification process and quality inspection">
     <div class="hero-overlay"></div>
     <div class="container">
         <p class="hero-kicker">Certification processes</p>

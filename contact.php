@@ -82,7 +82,7 @@ include __DIR__ . '/header.php';
 ?>
 
 <section class="inner-hero">
-    <img class="hero-media" src="<?php echo $baseUrl; ?>/images/quality-testing.jpg" alt="Contact IFTA AG in Berlin">
+    <img class="hero-media" src="<?php echo $baseUrl; ?>/images/hero-contact.jpg" alt="Contact the IFTA AG office">
     <div class="hero-overlay"></div>
     <div class="container">
         <p class="hero-kicker">Contact</p>

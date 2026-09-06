@@ -4,6 +4,8 @@ include __DIR__ . '/header.php';
 ?>
 
 <section class="inner-hero">
+    <img class="hero-media" src="<?php echo $baseUrl; ?>/images/hero-contact.jpg" alt="">
+    <div class="hero-overlay"></div>
     <div class="container">
         <h1>Privacy policy</h1>
         <p>How IFTA AG handles personal data on this website.</p>
