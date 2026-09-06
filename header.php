@@ -19,7 +19,8 @@ $isHome = $currentPage === 'index.php';
 if (!isset($isCertificationNav)) {
     $isCertificationNav = false;
 }
-$isCertificationNav = $isCertificationNav || $currentPage === 'certifications.php';
+$isCertificationNav = $isCertificationNav || in_array($currentPage, ['certifications.php', 'system-certification.php'], true);
+$isContactNav = in_array($currentPage, ['contact.php', 'careers.php'], true);
 if (!isset($pageDescription)) {
     $pageDescription = 'IFTA AG is a state-recognized certification body accredited to DIN EN ISO 17021 and DIN EN ISO 17065. Naturally. For the future.';
 }
@@ -35,12 +36,10 @@ $ogLogo = $siteAbs . '/images/logo.png';
 
 $navItems = [
     ['label' => 'Home', 'href' => $baseUrl . '/index.php', 'file' => 'index.php'],
-    ['label' => 'About Us', 'href' => $baseUrl . '/about.php', 'file' => 'about.php'],
-    ['label' => 'Portfolio', 'href' => $baseUrl . '/portfolio.php', 'file' => 'portfolio.php'],
-    ['label' => 'Certification Standards', 'href' => $baseUrl . '/certifications.php', 'file' => 'certifications.php'],
-    ['label' => 'Projects', 'href' => $baseUrl . '/projects.php', 'file' => 'projects.php'],
-    ['label' => 'Contact', 'href' => $contactHref, 'file' => 'contact.php'],
-    ['label' => 'Jobs', 'href' => $baseUrl . '/careers.php', 'file' => 'careers.php'],
+    ['label' => 'About us', 'href' => $baseUrl . '/about.php', 'file' => 'about.php'],
+    ['label' => 'Certification processes', 'href' => $baseUrl . '/certification-processes.php', 'file' => 'certification-processes.php'],
+    ['label' => 'System certification', 'href' => $baseUrl . '/system-certification.php', 'file' => 'system-certification.php'],
+    ['label' => 'Career and contact', 'href' => $contactHref, 'file' => 'contact.php'],
 ];
 ?>
 <!DOCTYPE html>
@@ -84,9 +83,9 @@ $navItems = [
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo $baseUrl; ?>/css/style.css">
+    <link rel="stylesheet" href="<?php echo $baseUrl; ?>/css/style.css?v=white2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 </head>
 <body class="<?php echo $isHome ? 'is-home' : 'is-inner'; ?>">
@@ -101,7 +100,7 @@ $navItems = [
                 <ul class="header-menu">
                     <?php foreach ($navItems as $item): ?>
                     <li class="nav-item">
-                        <a class="nav-link<?php echo ($currentPage === $item['file'] || ($item['file'] === 'certifications.php' && $isCertificationNav)) ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8'); ?></a>
+                        <a class="nav-link<?php echo ($currentPage === $item['file'] || ($item['file'] === 'system-certification.php' && $isCertificationNav) || ($item['file'] === 'contact.php' && $isContactNav)) ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8'); ?></a>
                     </li>
                     <?php endforeach; ?>
                 </ul>
@@ -136,7 +135,7 @@ $navItems = [
     <ul class="header-menu navbar-nav">
         <?php foreach ($navItems as $item): ?>
         <li class="nav-item">
-            <a class="nav-link<?php echo ($currentPage === $item['file'] || ($item['file'] === 'certifications.php' && $isCertificationNav)) ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8'); ?></a>
+            <a class="nav-link<?php echo ($currentPage === $item['file'] || ($item['file'] === 'system-certification.php' && $isCertificationNav) || ($item['file'] === 'contact.php' && $isContactNav)) ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8'); ?></a>
         </li>
         <?php endforeach; ?>
         <li class="nav-item">

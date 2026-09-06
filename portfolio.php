@@ -153,7 +153,7 @@ $sectors = [
             <p class="section-kicker">Next step</p>
             <h2>Need the right standard?</h2>
             <p>See our full list of certification standards, or speak with the IFTA AG team about the program that fits your organization.</p>
-            <a class="btn-olive" href="<?php echo $baseUrl; ?>/certifications.php">Certification standards</a>
+            <a class="btn-olive" href="<?php echo $baseUrl; ?>/system-certification.php">System certification</a>
             <a class="btn-outline-dark" href="<?php echo $baseUrl; ?>/contact.php">Contact us</a>
         </div>
         <div class="split-band-media">

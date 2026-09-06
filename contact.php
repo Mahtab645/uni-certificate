@@ -1,10 +1,15 @@
 <?php
-$pageTitle = 'Contact | IFTA AG';
-$pageDescription = 'Contact IFTA AG in Berlin: Neukirchstraße 26, 13089 Berlin. Phone +49 30 47 88 03 0, fax +49 30 47 88 03 20, email info@ifta-ag.de.';
+$pageTitle = 'Career and contact | IFTA AG';
+$pageDescription = 'Contact IFTA AG in Berlin or apply for a role. Neukirchstraße 26, 13089 Berlin. Phone +49 30 47 88 03 0, email info@ifta-ag.de.';
 
-$errors = [];
-$success = false;
-$old = [
+function page_clean($value)
+{
+    return trim((string) $value);
+}
+
+$contactErrors = [];
+$contactSuccess = false;
+$contactOld = [
     'name' => '',
     'email' => '',
     'phone' => '',
@@ -14,49 +19,56 @@ $old = [
     'message' => '',
 ];
 
-function contact_clean($value)
-{
-    return trim((string) $value);
-}
+$careerErrors = [];
+$careerSuccess = false;
+$careerOld = [
+    'name' => '',
+    'email' => '',
+    'phone' => '',
+    'position' => '',
+    'message' => '',
+];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    foreach ($old as $key => $unused) {
-        $old[$key] = contact_clean($_POST[$key] ?? '');
+$formType = page_clean($_POST['form'] ?? '');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $formType === 'contact') {
+    foreach ($contactOld as $key => $unused) {
+        $contactOld[$key] = page_clean($_POST[$key] ?? '');
     }
 
-    $honeypot = contact_clean($_POST['website'] ?? '');
+    $honeypot = page_clean($_POST['website'] ?? '');
 
-    if ($old['name'] === '') {
-        $errors[] = 'Please enter your name.';
+    if ($contactOld['name'] === '') {
+        $contactErrors[] = 'Please enter your name.';
     }
-    if ($old['email'] === '' || !filter_var($old['email'], FILTER_VALIDATE_EMAIL)) {
-        $errors[] = 'Please enter a valid email address.';
+    if ($contactOld['email'] === '' || !filter_var($contactOld['email'], FILTER_VALIDATE_EMAIL)) {
+        $contactErrors[] = 'Please enter a valid email address.';
     }
-    if ($old['message'] === '') {
-        $errors[] = 'Please enter a message.';
+    if ($contactOld['message'] === '') {
+        $contactErrors[] = 'Please enter a message.';
     }
     if (empty($_POST['captcha'])) {
-        $errors[] = 'Please confirm you are not a robot.';
+        $contactErrors[] = 'Please confirm you are not a robot.';
     }
 
     if ($honeypot !== '') {
-        $success = true;
-        $old = array_map(static function () {
+        $contactSuccess = true;
+        $contactOld = array_map(static function () {
             return '';
-        }, $old);
-    } elseif (!$errors) {
+        }, $contactOld);
+    } elseif (!$contactErrors) {
         $to = 'info@ifta-ag.de';
-        $subject = 'Website contact: ' . $old['name'];
+        $subject = 'Website contact: ' . $contactOld['name'];
         $body = "A new message was submitted from the IFTA AG website.\n\n"
-            . 'Name: ' . $old['name'] . "\n"
-            . 'Email: ' . $old['email'] . "\n"
-            . 'Phone: ' . ($old['phone'] !== '' ? $old['phone'] : '(not provided)') . "\n"
-            . 'Company: ' . ($old['company'] !== '' ? $old['company'] : '(not provided)') . "\n"
-            . 'Country: ' . ($old['country'] !== '' ? $old['country'] : '(not provided)') . "\n"
-            . 'Topic: ' . ($old['interest'] !== '' ? $old['interest'] : '(not provided)') . "\n\n"
-            . "Message:\n" . $old['message'] . "\n";
+            . 'Name: ' . $contactOld['name'] . "\n"
+            . 'Email: ' . $contactOld['email'] . "\n"
+            . 'Phone: ' . ($contactOld['phone'] !== '' ? $contactOld['phone'] : '(not provided)') . "\n"
+            . 'Company: ' . ($contactOld['company'] !== '' ? $contactOld['company'] : '(not provided)') . "\n"
+            . 'Country: ' . ($contactOld['country'] !== '' ? $contactOld['country'] : '(not provided)') . "\n"
+            . 'Topic: ' . ($contactOld['interest'] !== '' ? $contactOld['interest'] : '(not provided)') . "\n\n"
+            . "Message:\n" . $contactOld['message'] . "\n";
 
-        $fromEmail = filter_var($old['email'], FILTER_SANITIZE_EMAIL);
+        $fromEmail = filter_var($contactOld['email'], FILTER_SANITIZE_EMAIL);
         $headers = [
             'From: IFTA AG Website <noreply@ifta-ag.de>',
             'Reply-To: ' . $fromEmail,
@@ -66,12 +78,106 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $sent = @mail($to, $subject, $body, implode("\r\n", $headers));
         if ($sent) {
-            $success = true;
-            $old = array_map(static function () {
+            $contactSuccess = true;
+            $contactOld = array_map(static function () {
                 return '';
-            }, $old);
+            }, $contactOld);
         } else {
-            $errors[] = 'Your message could not be sent right now. Please call us or email info@ifta-ag.de.';
+            $contactErrors[] = 'Your message could not be sent right now. Please call us or email info@ifta-ag.de.';
+        }
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $formType === 'career') {
+    foreach ($careerOld as $key => $unused) {
+        $careerOld[$key] = page_clean($_POST[$key] ?? '');
+    }
+
+    $honeypot = page_clean($_POST['website'] ?? '');
+
+    if ($careerOld['name'] === '') {
+        $careerErrors[] = 'Please enter your name.';
+    }
+    if ($careerOld['email'] === '' || !filter_var($careerOld['email'], FILTER_VALIDATE_EMAIL)) {
+        $careerErrors[] = 'Please enter a valid email address.';
+    }
+    if ($careerOld['position'] === '') {
+        $careerErrors[] = 'Please enter the position you are applying for.';
+    }
+    if ($careerOld['message'] === '') {
+        $careerErrors[] = 'Please enter a short message.';
+    }
+    if (empty($_POST['captcha'])) {
+        $careerErrors[] = 'Please confirm you are not a robot.';
+    }
+
+    $fileName = '';
+    $fileTmp = '';
+    $fileType = '';
+    if (!empty($_FILES['cv']['name']) && (int) ($_FILES['cv']['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
+        if ((int) $_FILES['cv']['error'] !== UPLOAD_ERR_OK) {
+            $careerErrors[] = 'The CV file could not be uploaded. Please try again.';
+        } elseif ((int) $_FILES['cv']['size'] > 15 * 1024 * 1024) {
+            $careerErrors[] = 'The CV must be 15 MB or smaller.';
+        } else {
+            $fileName = basename((string) $_FILES['cv']['name']);
+            $fileTmp = (string) $_FILES['cv']['tmp_name'];
+            $fileType = (string) ($_FILES['cv']['type'] ?? 'application/octet-stream');
+        }
+    }
+
+    if ($honeypot !== '') {
+        $careerSuccess = true;
+        $careerOld = array_map(static function () {
+            return '';
+        }, $careerOld);
+    } elseif (!$careerErrors) {
+        $to = 'bewerbung@ifta-ag.de';
+        $subject = 'Career application: ' . $careerOld['name'];
+        $body = "A new application was submitted from the IFTA AG Career and contact page.\n\n"
+            . 'Name: ' . $careerOld['name'] . "\n"
+            . 'Email: ' . $careerOld['email'] . "\n"
+            . 'Phone: ' . ($careerOld['phone'] !== '' ? $careerOld['phone'] : '(not provided)') . "\n"
+            . 'Position: ' . $careerOld['position'] . "\n\n"
+            . "Message:\n" . $careerOld['message'] . "\n";
+
+        $fromEmail = filter_var($careerOld['email'], FILTER_SANITIZE_EMAIL);
+        $encodedName = '=?UTF-8?B?' . base64_encode($fileName) . '?=';
+        $headers = [
+            'From: IFTA AG Careers <noreply@ifta-ag.de>',
+            'Reply-To: ' . $fromEmail,
+            'X-Mailer: PHP/' . PHP_VERSION,
+        ];
+
+        $sent = false;
+        if ($fileTmp !== '' && is_readable($fileTmp)) {
+            $boundary = 'bnd_' . md5(uniqid((string) mt_rand(), true));
+            $fileData = chunk_split(base64_encode((string) file_get_contents($fileTmp)));
+            $headers[] = 'MIME-Version: 1.0';
+            $headers[] = 'Content-Type: multipart/mixed; boundary="' . $boundary . '"';
+            $message = '--' . $boundary . "\r\n"
+                . "Content-Type: text/plain; charset=UTF-8\r\n"
+                . "Content-Transfer-Encoding: 8bit\r\n\r\n"
+                . $body . "\r\n"
+                . '--' . $boundary . "\r\n"
+                . 'Content-Type: ' . $fileType . '; name="' . $encodedName . '"' . "\r\n"
+                . "Content-Transfer-Encoding: base64\r\n"
+                . 'Content-Disposition: attachment; filename="' . $encodedName . '"' . "\r\n\r\n"
+                . $fileData . "\r\n"
+                . '--' . $boundary . "--\r\n";
+            $sent = @mail($to, $subject, $message, implode("\r\n", $headers));
+        } else {
+            $headers[] = 'Content-Type: text/plain; charset=UTF-8';
+            $sent = @mail($to, $subject, $body, implode("\r\n", $headers));
+        }
+
+        if ($sent) {
+            $careerSuccess = true;
+            $careerOld = array_map(static function () {
+                return '';
+            }, $careerOld);
+        } else {
+            $careerErrors[] = 'Your application could not be sent right now. Please email bewerbung@ifta-ag.de.';
         }
     }
 }
@@ -79,15 +185,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 include __DIR__ . '/header.php';
 ?>
 
-<section class="inner-hero about-page-hero">
+<section class="inner-hero">
     <div class="container">
-        <p class="hero-kicker">Contact</p>
-        <h1>We look forward<br>to hearing from you.</h1>
-        <p>Reach IFTA AG in Berlin by phone, fax or email — or send a message using the form.</p>
+        <p class="hero-kicker">Career and contact</p>
+        <h1>Get in touch with us.</h1>
+        <p>Your questions and wishes are important to us. Reach us by phone, email or the form. Applications are welcome below.</p>
     </div>
 </section>
 
-<section class="inner-section">
+<section class="inner-section" id="contact">
     <div class="container contact-layout">
         <div>
             <p class="section-kicker">IFTA AG</p>
@@ -113,19 +219,24 @@ include __DIR__ . '/header.php';
         </div>
 
         <div class="contact-panel">
-            <?php if ($success): ?>
+            <p class="section-kicker">Contact form</p>
+            <h2>Send an enquiry</h2>
+            <p>Please complete the fields and describe your request in detail so that we can assist you quickly.</p>
+
+            <?php if ($contactSuccess): ?>
                 <p class="contact-form-success">Thank you. Your message has been sent, and our team will be in touch shortly.</p>
             <?php endif; ?>
 
-            <?php if ($errors): ?>
+            <?php if ($contactErrors): ?>
                 <div class="contact-form-errors" role="alert">
-                    <?php foreach ($errors as $error): ?>
+                    <?php foreach ($contactErrors as $error): ?>
                         <p><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></p>
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>
 
-            <form class="contact-form" method="post" action="<?php echo htmlspecialchars($baseUrl . '/contact.php', ENT_QUOTES, 'UTF-8'); ?>">
+            <form class="contact-form" method="post" action="<?php echo htmlspecialchars($baseUrl . '/contact.php#contact', ENT_QUOTES, 'UTF-8'); ?>">
+                <input type="hidden" name="form" value="contact">
                 <div class="visually-hidden" aria-hidden="true">
                     <label for="website">Website</label>
                     <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -133,31 +244,23 @@ include __DIR__ . '/header.php';
                 <div class="contact-form-grid">
                     <div class="contact-field">
                         <label for="name">Name <span>*</span></label>
-                        <input type="text" id="name" name="name" required value="<?php echo htmlspecialchars($old['name'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <input type="text" id="name" name="name" required value="<?php echo htmlspecialchars($contactOld['name'], ENT_QUOTES, 'UTF-8'); ?>">
                     </div>
                     <div class="contact-field">
                         <label for="email">Email <span>*</span></label>
-                        <input type="email" id="email" name="email" required value="<?php echo htmlspecialchars($old['email'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <input type="email" id="email" name="email" required value="<?php echo htmlspecialchars($contactOld['email'], ENT_QUOTES, 'UTF-8'); ?>">
                     </div>
                     <div class="contact-field">
                         <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($old['phone'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($contactOld['phone'], ENT_QUOTES, 'UTF-8'); ?>">
                     </div>
                     <div class="contact-field">
                         <label for="company">Company</label>
-                        <input type="text" id="company" name="company" value="<?php echo htmlspecialchars($old['company'], ENT_QUOTES, 'UTF-8'); ?>">
-                    </div>
-                    <div class="contact-field">
-                        <label for="country">Country</label>
-                        <input type="text" id="country" name="country" value="<?php echo htmlspecialchars($old['country'], ENT_QUOTES, 'UTF-8'); ?>">
-                    </div>
-                    <div class="contact-field">
-                        <label for="interest">Topic</label>
-                        <input type="text" id="interest" name="interest" value="<?php echo htmlspecialchars($old['interest'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <input type="text" id="company" name="company" value="<?php echo htmlspecialchars($contactOld['company'], ENT_QUOTES, 'UTF-8'); ?>">
                     </div>
                     <div class="contact-field contact-field-full">
                         <label for="message">Message <span>*</span></label>
-                        <textarea id="message" name="message" rows="6" required><?php echo htmlspecialchars($old['message'], ENT_QUOTES, 'UTF-8'); ?></textarea>
+                        <textarea id="message" name="message" rows="6" required><?php echo htmlspecialchars($contactOld['message'], ENT_QUOTES, 'UTF-8'); ?></textarea>
                     </div>
                 </div>
                 <label class="contact-captcha-inline">
@@ -165,6 +268,81 @@ include __DIR__ . '/header.php';
                     <span>I'm not a robot</span>
                 </label>
                 <button class="contact-submit" type="submit">Send message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="inner-section" id="career">
+    <div class="container career-contact-grid">
+        <div>
+            <p class="section-kicker">Careers</p>
+            <h2>Work with purpose</h2>
+            <p>At IFTA AG you will find meaningful work with a long-term perspective — in auditing, administration and internships across certification and sustainability.</p>
+            <p>Please complete the application form and attach your CV if available. Our team will be in touch shortly.</p>
+        </div>
+        <div class="career-card">
+            <h2>Career application</h2>
+
+            <?php if ($careerSuccess): ?>
+                <p class="contact-form-success">Thank you. Your application has been sent, and our team will be in touch shortly.</p>
+            <?php endif; ?>
+
+            <?php if ($careerErrors): ?>
+                <div class="contact-form-errors" role="alert">
+                    <?php foreach ($careerErrors as $error): ?>
+                        <p><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></p>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+            <form class="career-form" method="post" action="<?php echo htmlspecialchars($baseUrl . '/contact.php#career', ENT_QUOTES, 'UTF-8'); ?>" enctype="multipart/form-data">
+                <input type="hidden" name="form" value="career">
+                <div class="visually-hidden" aria-hidden="true">
+                    <label for="career-website">Website</label>
+                    <input type="text" id="career-website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="career-form-grid">
+                    <div class="career-field">
+                        <label for="career-name">Full name <span>*</span></label>
+                        <input type="text" id="career-name" name="name" required placeholder="Your name" value="<?php echo htmlspecialchars($careerOld['name'], ENT_QUOTES, 'UTF-8'); ?>">
+                    </div>
+                    <div class="career-field">
+                        <label for="career-email">Email <span>*</span></label>
+                        <input type="email" id="career-email" name="email" required placeholder="you@example.com" value="<?php echo htmlspecialchars($careerOld['email'], ENT_QUOTES, 'UTF-8'); ?>">
+                    </div>
+                    <div class="career-field">
+                        <label for="career-phone">Phone</label>
+                        <input type="tel" id="career-phone" name="phone" placeholder="+49 …" value="<?php echo htmlspecialchars($careerOld['phone'], ENT_QUOTES, 'UTF-8'); ?>">
+                    </div>
+                    <div class="career-field">
+                        <label for="position">Position <span>*</span></label>
+                        <input type="text" id="position" name="position" required placeholder="Role you are applying for" value="<?php echo htmlspecialchars($careerOld['position'], ENT_QUOTES, 'UTF-8'); ?>">
+                    </div>
+                    <div class="career-field career-field-full">
+                        <span class="career-label">CV / résumé</span>
+                        <label class="career-file" for="cv">
+                            <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx,.odt">
+                            <span class="career-file-box">
+                                <strong id="cvTitle">Choose a file</strong>
+                                <em id="cvHint">PDF, Word or ODT · max 15 MB</em>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="career-field career-field-full">
+                        <label for="career-message">Message <span>*</span></label>
+                        <textarea id="career-message" name="message" rows="6" required placeholder="A short introduction and why you would like to join IFTA AG"><?php echo htmlspecialchars($careerOld['message'], ENT_QUOTES, 'UTF-8'); ?></textarea>
+                    </div>
+                </div>
+
+                <div class="career-form-footer">
+                    <label class="contact-captcha-inline">
+                        <input type="checkbox" name="captcha" value="1" required>
+                        <span>I'm not a robot</span>
+                    </label>
+                    <button class="career-submit" type="submit">Submit application</button>
+                </div>
             </form>
         </div>
     </div>

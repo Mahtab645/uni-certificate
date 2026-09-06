@@ -8,7 +8,7 @@
         var backdrop = document.getElementById('navBackdrop');
         if (!nav || !toggle) return;
 
-        var mq = window.matchMedia('(max-width: 1199.98px)');
+        var mq = window.matchMedia('(max-width: 1099.98px)');
 
         function isMobile() {
             return mq.matches;

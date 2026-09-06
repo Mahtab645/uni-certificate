@@ -261,7 +261,7 @@ function ifta_standard_url($baseUrl, $slug)
 {
     $standard = ifta_get_standard($slug);
     if (!$standard) {
-        return $baseUrl . '/certifications.php';
+        return $baseUrl . '/system-certification.php';
     }
     return $baseUrl . '/' . $standard['file'];
 }

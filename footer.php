@@ -2,28 +2,26 @@
     <div class="container footer-inner">
         <div class="footer-brand-block">
             <p class="footer-brand">IFTA AG</p>
-            <p class="footer-tagline">Naturally. For the future.</p>
-            <p>Independent certification for management systems, products, processes and sustainability — nationally and internationally.</p>
-        </div>
-        <div class="footer-col">
-            <h3>Office</h3>
             <p>Neukirchstraße 26<br>13089 Berlin<br>Germany</p>
+            <p><a href="mailto:info@ifta-ag.de">info@ifta-ag.de</a></p>
         </div>
         <div class="footer-col">
             <h3>Contact</h3>
-            <p>Phone <a href="tel:+49304788030">+49 30 47 88 03 0</a></p>
-            <p>Fax +49 30 47 88 03 20</p>
-            <p>Email <a href="mailto:info@ifta-ag.de">info@ifta-ag.de</a></p>
+            <a href="<?php echo $contactHref; ?>">Contact form</a>
+        </div>
+        <div class="footer-col">
+            <h3>Career</h3>
+            <a href="<?php echo $contactHref; ?>#career">Application</a>
         </div>
         <div class="footer-col footer-links-col">
-            <h3>Quick links</h3>
-            <a href="<?php echo $baseUrl; ?>/about.php">About Us</a>
-            <a href="<?php echo $baseUrl; ?>/contact.php">Contact</a>
-            <a href="<?php echo $baseUrl; ?>/certifications.php">Certification Standards</a>
+            <h3>Our services</h3>
+            <a href="<?php echo $baseUrl; ?>/about.php">About us</a>
+            <a href="<?php echo $baseUrl; ?>/certification-processes.php">Certification processes</a>
+            <a href="<?php echo $baseUrl; ?>/system-certification.php">System certification</a>
         </div>
     </div>
     <div class="container footer-bottom">
-        <p>&copy; <?php echo date('Y'); ?> IFTA AG. All rights reserved.</p>
+        <p>&copy; <?php echo date('Y'); ?> IFTA AG</p>
     </div>
 </footer>
 
