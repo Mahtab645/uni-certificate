@@ -121,92 +121,133 @@ include __DIR__ . '/header.php';
     <div class="hero-overlay"></div>
     <div class="container">
         <p class="hero-kicker">Career</p>
-        <h1>Work with purpose.</h1>
-        <p>Join IFTA AG in Berlin for meaningful work with a long-term perspective — in auditing, administration and internships.</p>
+        <h1>Build a career in independent certification.</h1>
+        <p>Join a Berlin-based team that audits and certifies management systems, products and processes — nationally and internationally.</p>
     </div>
 </section>
 
-<section class="inner-section" id="career">
-    <div class="container career-contact-grid">
-        <div>
-            <p class="section-kicker">Careers</p>
-            <h2>Open applications</h2>
-            <p>At IFTA AG you will find work that supports independent certification of management systems, products and processes — nationally and internationally.</p>
-            <p>We welcome applications for auditing, administration and internships. Please complete the form and attach your CV if available. Our team will be in touch shortly.</p>
-            <div class="contact-details" style="margin-top:28px;">
-                <div class="contact-detail">
-                    <h3>Applications</h3>
-                    <p><a href="mailto:bewerbung@ifta-ag.de">bewerbung@ifta-ag.de</a></p>
-                </div>
-                <div class="contact-detail">
-                    <h3>Office</h3>
-                    <p>Neukirchstraße 26<br>13089 Berlin</p>
-                </div>
+<section class="page-connect" id="career">
+    <div class="container">
+        <div class="connect-intro career-lead">
+            <p class="section-kicker">Working at IFTA AG</p>
+            <h2>Where expertise meets responsibility</h2>
+            <p>We welcome professionals and graduates who value independence, objectivity and careful work. Applications are open for auditing, administration and internships.</p>
+        </div>
+
+        <div class="role-tiles">
+            <article class="info-tile">
+                <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+                <h3>Auditing</h3>
+                <p>Plan and conduct audits for management systems and product programmes, with a clear, impartial procedure.</p>
+            </article>
+            <article class="info-tile">
+                <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+                <h3>Administration</h3>
+                <p>Support certification operations, client communication and documentation from our Berlin office.</p>
+            </article>
+            <article class="info-tile">
+                <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                <h3>Internships</h3>
+                <p>Gain practical insight into certification, quality and sustainability with structured on-the-job learning.</p>
+            </article>
+        </div>
+
+        <div class="benefit-row">
+            <div class="benefit-item">
+                <h3>International work</h3>
+                <p>Projects with clients across sectors and borders.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>Professional growth</h3>
+                <p>Continuous training against recognized standards.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>Berlin base</h3>
+                <p>A compact team with a long-term perspective.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>Meaningful impact</h3>
+                <p>Certification that organisations can actually use.</p>
             </div>
         </div>
-        <div class="career-card">
-            <h2>Career application</h2>
 
-            <?php if ($careerSuccess): ?>
-                <p class="contact-form-success">Thank you. Your application has been sent, and our team will be in touch shortly.</p>
-            <?php endif; ?>
-
-            <?php if ($careerErrors): ?>
-                <div class="contact-form-errors" role="alert">
-                    <?php foreach ($careerErrors as $error): ?>
-                        <p><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></p>
-                    <?php endforeach; ?>
+        <div class="connect-split">
+            <div class="connect-intro">
+                <p class="section-kicker">Apply now</p>
+                <h2>Send your application</h2>
+                <p>Complete the form and attach your CV if available. We review every application and will be in touch shortly.</p>
+                <div class="info-tile info-tile-inline">
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                    <h3>Applications desk</h3>
+                    <p><a href="mailto:bewerbung@ifta-ag.de">bewerbung@ifta-ag.de</a></p>
+                    <p class="info-tile-note">Neukirchstraße 26, 13089 Berlin</p>
                 </div>
-            <?php endif; ?>
+            </div>
 
-            <form class="career-form" method="post" action="<?php echo htmlspecialchars($baseUrl . '/careers.php#career', ENT_QUOTES, 'UTF-8'); ?>" enctype="multipart/form-data">
-                <input type="hidden" name="form" value="career">
-                <div class="visually-hidden" aria-hidden="true">
-                    <label for="career-website">Website</label>
-                    <input type="text" id="career-website" name="website" tabindex="-1" autocomplete="off">
-                </div>
+            <div class="form-shell">
+                <h2>Career application</h2>
 
-                <div class="career-form-grid">
-                    <div class="career-field">
-                        <label for="career-name">Full name <span>*</span></label>
-                        <input type="text" id="career-name" name="name" required placeholder="Your name" value="<?php echo htmlspecialchars($careerOld['name'], ENT_QUOTES, 'UTF-8'); ?>">
+                <?php if ($careerSuccess): ?>
+                    <p class="contact-form-success">Thank you. Your application has been sent, and our team will be in touch shortly.</p>
+                <?php endif; ?>
+
+                <?php if ($careerErrors): ?>
+                    <div class="contact-form-errors" role="alert">
+                        <?php foreach ($careerErrors as $error): ?>
+                            <p><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></p>
+                        <?php endforeach; ?>
                     </div>
-                    <div class="career-field">
-                        <label for="career-email">Email <span>*</span></label>
-                        <input type="email" id="career-email" name="email" required placeholder="you@example.com" value="<?php echo htmlspecialchars($careerOld['email'], ENT_QUOTES, 'UTF-8'); ?>">
+                <?php endif; ?>
+
+                <form class="career-form" method="post" action="<?php echo htmlspecialchars($baseUrl . '/careers.php#career', ENT_QUOTES, 'UTF-8'); ?>" enctype="multipart/form-data">
+                    <input type="hidden" name="form" value="career">
+                    <div class="visually-hidden" aria-hidden="true">
+                        <label for="career-website">Website</label>
+                        <input type="text" id="career-website" name="website" tabindex="-1" autocomplete="off">
                     </div>
-                    <div class="career-field">
-                        <label for="career-phone">Phone</label>
-                        <input type="tel" id="career-phone" name="phone" placeholder="+49 …" value="<?php echo htmlspecialchars($careerOld['phone'], ENT_QUOTES, 'UTF-8'); ?>">
+
+                    <div class="career-form-grid">
+                        <div class="career-field">
+                            <label for="career-name">Full name <span>*</span></label>
+                            <input type="text" id="career-name" name="name" required placeholder="Your name" value="<?php echo htmlspecialchars($careerOld['name'], ENT_QUOTES, 'UTF-8'); ?>">
+                        </div>
+                        <div class="career-field">
+                            <label for="career-email">Email <span>*</span></label>
+                            <input type="email" id="career-email" name="email" required placeholder="you@example.com" value="<?php echo htmlspecialchars($careerOld['email'], ENT_QUOTES, 'UTF-8'); ?>">
+                        </div>
+                        <div class="career-field">
+                            <label for="career-phone">Phone</label>
+                            <input type="tel" id="career-phone" name="phone" placeholder="+49 …" value="<?php echo htmlspecialchars($careerOld['phone'], ENT_QUOTES, 'UTF-8'); ?>">
+                        </div>
+                        <div class="career-field">
+                            <label for="position">Position <span>*</span></label>
+                            <input type="text" id="position" name="position" required placeholder="Role you are applying for" value="<?php echo htmlspecialchars($careerOld['position'], ENT_QUOTES, 'UTF-8'); ?>">
+                        </div>
+                        <div class="career-field career-field-full">
+                            <span class="career-label">CV / résumé</span>
+                            <label class="career-file" for="cv">
+                                <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx,.odt">
+                                <span class="career-file-box">
+                                    <strong id="cvTitle">Choose a file</strong>
+                                    <em id="cvHint">PDF, Word or ODT · max 15 MB</em>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="career-field career-field-full">
+                            <label for="career-message">Message <span>*</span></label>
+                            <textarea id="career-message" name="message" rows="6" required placeholder="A short introduction and why you would like to join IFTA AG"><?php echo htmlspecialchars($careerOld['message'], ENT_QUOTES, 'UTF-8'); ?></textarea>
+                        </div>
                     </div>
-                    <div class="career-field">
-                        <label for="position">Position <span>*</span></label>
-                        <input type="text" id="position" name="position" required placeholder="Role you are applying for" value="<?php echo htmlspecialchars($careerOld['position'], ENT_QUOTES, 'UTF-8'); ?>">
-                    </div>
-                    <div class="career-field career-field-full">
-                        <span class="career-label">CV / résumé</span>
-                        <label class="career-file" for="cv">
-                            <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx,.odt">
-                            <span class="career-file-box">
-                                <strong id="cvTitle">Choose a file</strong>
-                                <em id="cvHint">PDF, Word or ODT · max 15 MB</em>
-                            </span>
+
+                    <div class="form-actions">
+                        <label class="contact-captcha-inline">
+                            <input type="checkbox" name="captcha" value="1" required>
+                            <span>I'm not a robot</span>
                         </label>
+                        <button class="career-submit" type="submit">Submit application</button>
                     </div>
-                    <div class="career-field career-field-full">
-                        <label for="career-message">Message <span>*</span></label>
-                        <textarea id="career-message" name="message" rows="6" required placeholder="A short introduction and why you would like to join IFTA AG"><?php echo htmlspecialchars($careerOld['message'], ENT_QUOTES, 'UTF-8'); ?></textarea>
-                    </div>
-                </div>
-
-                <div class="career-form-footer">
-                    <label class="contact-captcha-inline">
-                        <input type="checkbox" name="captcha" value="1" required>
-                        <span>I'm not a robot</span>
-                    </label>
-                    <button class="career-submit" type="submit">Submit application</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </section>
