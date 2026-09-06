@@ -413,7 +413,7 @@ h3,
   display: block;
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.58) 42%, rgba(255, 255, 255, 0.12) 100%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.88) 48%, rgba(255, 255, 255, 0.78) 100%);
 }
 
 .hero > .container,
@@ -422,8 +422,39 @@ h3,
   z-index: 2;
 }
 
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+}
+
 .hero-content {
   max-width: 720px;
+}
+
+.hero-cert {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--line);
+  padding: 28px 26px 24px;
+}
+
+.hero-cert h2 {
+  margin: 0 0 8px;
+  font-size: 26px;
+  color: var(--heading-2);
+}
+
+.hero-cert p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 16px;
+  max-width: none;
+}
+
+.hero-cert .cert-form-row {
+  margin-top: 4px;
 }
 
 .hero-title,
@@ -1186,6 +1217,7 @@ font {
     height: 44px;
   }
 
+  .hero-layout,
   .cert-bar-inner,
   .home-intro-grid,
   .contact-layout,

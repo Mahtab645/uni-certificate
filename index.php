@@ -7,7 +7,7 @@ include __DIR__ . '/header.php';
 <section class="hero">
     <img class="hero-media" src="<?php echo $baseUrl; ?>/images/hero-home.jpg" alt="Quality inspection and certification work">
     <div class="hero-overlay"></div>
-    <div class="container">
+    <div class="container hero-layout">
         <div class="hero-content">
             <p class="hero-kicker">Welcome to IFTA AG</p>
             <h1 class="hero-title">Certifications from a single source.</h1>
@@ -17,23 +17,18 @@ include __DIR__ . '/header.php';
                 <a class="btn-outline-dark" href="<?php echo $baseUrl; ?>/system-certification.php">System certification</a>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="cert-bar" aria-label="Certificate verification">
-    <div class="container cert-bar-inner">
-        <div class="cert-bar-copy">
+        <aside class="hero-cert" aria-label="Certificate verification">
             <p class="cert-bar-kicker">Certificate verification</p>
             <h2>Look up an issued certificate</h2>
             <p>Enter the certificate number to open the official PDF.</p>
-        </div>
-        <form class="cert-form" action="<?php echo $baseUrl; ?>/certificate.php" method="get" target="_blank" rel="noopener">
-            <label for="certificateNumber">Certificate number</label>
-            <div class="cert-form-row">
-                <input type="text" id="certificateNumber" name="number" required autocomplete="off" placeholder="Enter certificate number">
-                <button type="submit">View certificate</button>
-            </div>
-        </form>
+            <form class="cert-form" action="<?php echo $baseUrl; ?>/certificate.php" method="get" target="_blank" rel="noopener">
+                <label for="certificateNumber">Certificate number</label>
+                <div class="cert-form-row">
+                    <input type="text" id="certificateNumber" name="number" required autocomplete="off" placeholder="Enter certificate number">
+                    <button type="submit">View certificate</button>
+                </div>
+            </form>
+        </aside>
     </div>
 </section>
 
