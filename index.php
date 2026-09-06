@@ -125,7 +125,7 @@ include __DIR__ . '/header.php';
             </div>
             <div class="page-cta-row">
                 <a class="btn-olive" href="<?php echo $contactHref; ?>">Open contact form</a>
-                <a class="btn-outline-dark" href="<?php echo $contactHref; ?>#career">Career application</a>
+                <a class="btn-outline-dark" href="<?php echo $careersHref; ?>">Career application</a>
             </div>
         </div>
     </div>

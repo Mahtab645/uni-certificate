@@ -4,7 +4,8 @@
   --muted: #5a5a5a;
   --line: #e6e6e6;
   --fill: #f7f7f7;
-  --header: 72px;
+  --header: 84px;
+  --header-top: 40px;
   --font: "Outfit", "Segoe UI", sans-serif;
 }
 
@@ -16,14 +17,14 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px;
+  scroll-padding-top: 140px;
 }
 
 body {
   margin: 0;
   font-family: var(--font);
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 1.7;
   color: var(--ink);
   background: #fff;
   -webkit-font-smoothing: antialiased;
@@ -67,7 +68,7 @@ h4 {
 .hero-kicker,
 .cert-bar-kicker {
   margin: 0 0 10px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -82,6 +83,36 @@ h4 {
   border-bottom: 1px solid var(--line);
 }
 
+.header-top {
+  border-bottom: 1px solid var(--line);
+  background: #fafafa;
+}
+
+.header-top-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-top);
+  gap: 16px;
+}
+
+.header-top-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 22px;
+}
+
+.header-top-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.header-top-links a:hover {
+  color: #000;
+}
+
 .header-inner {
   display: flex;
   align-items: center;
@@ -92,9 +123,9 @@ h4 {
 
 .header-logo img {
   display: block;
-  height: 46px;
+  height: 54px;
   width: auto;
-  max-width: 180px;
+  max-width: 210px;
   object-fit: contain;
 }
 
@@ -107,17 +138,17 @@ h4 {
 .header-nav .header-menu {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 20px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .header-nav .nav-link {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   color: #333;
-  padding: 8px 0;
+  padding: 10px 0;
 }
 
 .header-nav .nav-link:hover,
@@ -143,7 +174,7 @@ h4 {
   min-width: 34px;
   height: 28px;
   font-family: inherit;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.06em;
   color: #888;
@@ -164,13 +195,13 @@ h4 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 42px;
-  padding: 0 18px;
+  height: 46px;
+  padding: 0 20px;
   border: 1px solid #000;
   background: #000;
   color: #fff;
   font-family: inherit;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.02em;
   border-radius: 2px;
@@ -246,7 +277,7 @@ h4 {
 .cert-bar-copy p {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .cert-form label {
@@ -272,7 +303,7 @@ h4 {
   border-radius: 2px;
   padding: 12px 14px;
   font-family: inherit;
-  font-size: 15px;
+  font-size: 17px;
   color: var(--ink);
 }
 
@@ -344,9 +375,9 @@ h4 {
 .hero-lead,
 .inner-hero p {
   margin: 0;
-  max-width: 620px;
+  max-width: 680px;
   color: var(--muted);
-  font-size: 17px;
+  font-size: 20px;
 }
 
 .hero-actions,
@@ -493,7 +524,7 @@ h4 {
 .topic-card p {
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .process-step {
@@ -634,7 +665,7 @@ h4 {
 .photo-card p {
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .split-band-meta a {
@@ -643,17 +674,31 @@ h4 {
 }
 
 .site-footer {
-  background: #fff;
+  background: #fafafa;
   color: var(--muted);
-  padding: 48px 0 20px;
+  padding: 64px 0 0;
   border-top: 1px solid var(--line);
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .footer-inner {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 28px;
+  grid-template-columns: 1.5fr 1fr 1.1fr 1fr;
+  gap: 40px 32px;
+  padding-bottom: 48px;
+}
+
+.footer-logo {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.footer-logo img {
+  display: block;
+  height: 52px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
 }
 
 .footer-brand,
@@ -671,16 +716,31 @@ h4 {
   margin: 0 0 10px;
 }
 
+.footer-brand-block p {
+  margin: 0;
+  max-width: 360px;
+  line-height: 1.7;
+}
+
 .footer-col h3 {
-  margin: 0 0 12px;
-  font-size: 11px;
+  margin: 0 0 16px;
+  font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-.footer-col p,
-.footer-brand-block p {
-  margin: 0 0 6px;
+.footer-col p {
+  margin: 0 0 10px;
+}
+
+.footer-col a {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--muted);
+}
+
+.footer-col a:hover {
+  color: #000;
 }
 
 .footer-links-col {
@@ -691,10 +751,32 @@ h4 {
 }
 
 .footer-bottom {
-  margin-top: 32px;
-  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 18px 0;
   border-top: 1px solid var(--line);
-  font-size: 12px;
+  font-size: 14px;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-legal a {
+  color: var(--muted);
+}
+
+.footer-legal a:hover {
+  color: #000;
 }
 
 .about-jump {
@@ -732,7 +814,7 @@ h4 {
 
 .contact-detail p {
   margin: 0;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .contact-form-grid,
@@ -752,7 +834,7 @@ h4 {
 .career-label {
   display: block;
   margin-bottom: 6px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -854,11 +936,11 @@ h4 {
 .iso-chip {
   display: inline-flex;
   align-items: center;
-  min-height: 42px;
-  padding: 0 14px;
+  min-height: 46px;
+  padding: 0 16px;
   border: 1px solid var(--line);
   background: #fff;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
 }
 
@@ -868,7 +950,7 @@ h4 {
 
 .standard-aside {
   position: sticky;
-  top: calc(var(--header) + 20px);
+  top: calc(var(--header) + var(--header-top) + 20px);
 }
 
 .standard-aside .contact-panel {
@@ -939,8 +1021,9 @@ font {
   color: inherit !important;
 }
 
-@media (max-width: 1099.98px) {
-  .header-nav {
+@media (max-width: 1199.98px) {
+  .header-nav,
+  .header-nav-wrap {
     display: none;
   }
 
@@ -999,6 +1082,7 @@ font {
     display: block;
     padding: 14px 0;
     border-bottom: 1px solid var(--line);
+    font-size: 18px;
   }
 
   .navbar-nav .header-cta {
@@ -1020,6 +1104,14 @@ font {
 }
 
 @media (max-width: 991.98px) {
+  .header-inner {
+    min-height: 68px;
+  }
+
+  .header-logo img {
+    height: 44px;
+  }
+
   .cert-bar-inner,
   .home-intro-grid,
   .contact-layout,

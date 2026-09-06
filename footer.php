@@ -1,27 +1,36 @@
 <footer class="site-footer">
     <div class="container footer-inner">
         <div class="footer-brand-block">
-            <p class="footer-brand">IFTA AG</p>
-            <p>Neukirchstraße 26<br>13089 Berlin<br>Germany</p>
-            <p><a href="mailto:info@ifta-ag.de">info@ifta-ag.de</a></p>
+            <a class="footer-logo notranslate" href="<?php echo $baseUrl; ?>/index.php">
+                <img src="<?php echo $baseUrl; ?>/images/logo.png" alt="IFTA AG">
+            </a>
+            <p>Independent certification for management systems, products and processes — nationally and internationally.</p>
         </div>
         <div class="footer-col">
-            <h3>Contact</h3>
-            <a href="<?php echo $contactHref; ?>">Contact form</a>
-        </div>
-        <div class="footer-col">
-            <h3>Career</h3>
-            <a href="<?php echo $contactHref; ?>#career">Application</a>
-        </div>
-        <div class="footer-col footer-links-col">
-            <h3>Our services</h3>
+            <h3>Services</h3>
             <a href="<?php echo $baseUrl; ?>/about.php">About us</a>
             <a href="<?php echo $baseUrl; ?>/certification-processes.php">Certification processes</a>
             <a href="<?php echo $baseUrl; ?>/system-certification.php">System certification</a>
         </div>
+        <div class="footer-col">
+            <h3>Contact</h3>
+            <p>Neukirchstraße 26<br>13089 Berlin</p>
+            <p><a href="tel:+49304788030">+49 30 47 88 03 0</a></p>
+            <p><a href="mailto:info@ifta-ag.de">info@ifta-ag.de</a></p>
+            <a href="<?php echo $contactHref; ?>">Contact form</a>
+        </div>
+        <div class="footer-col">
+            <h3>Career</h3>
+            <p>Apply for auditing, administration and internships.</p>
+            <a href="<?php echo $careersHref; ?>">Open positions</a>
+        </div>
     </div>
     <div class="container footer-bottom">
         <p>&copy; <?php echo date('Y'); ?> IFTA AG</p>
+        <div class="footer-legal">
+            <a href="<?php echo $baseUrl; ?>/imprint.php">Imprint</a>
+            <a href="<?php echo $baseUrl; ?>/privacy.php">Privacy</a>
+        </div>
     </div>
 </footer>
 
