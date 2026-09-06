@@ -5,6 +5,8 @@ include __DIR__ . '/header.php';
 ?>
 
 <section class="inner-hero">
+    <img class="hero-media" src="<?php echo $baseUrl; ?>/images/about-who-we-are.png" alt="About IFTA AG">
+    <div class="hero-overlay"></div>
     <div class="container">
         <p class="hero-kicker">About us</p>
         <h1>IFTA AG introduces itself.</h1>
@@ -14,11 +16,12 @@ include __DIR__ . '/header.php';
 
 <section class="home-intro">
     <div class="container home-intro-grid">
-        <div class="home-intro-title">
+        <figure class="media-figure">
+            <img src="<?php echo $baseUrl; ?>/images/quality-forge.jpg" alt="Independent certification at IFTA AG">
+        </figure>
+        <div class="home-intro-copy">
             <p class="section-kicker">Who we are</p>
             <h2>Why IFTA AG</h2>
-        </div>
-        <div class="home-intro-copy">
             <p>IFTA AG has grown from an inspection body for agricultural holdings into a cross-sector certification company. We audit and certify management systems, products and processes under internationally recognized standards.</p>
             <p>Every client is supported according to the principles of independence, objectivity and confidentiality. Our customers come from agriculture and food, healthcare, industry, trade, services, education and the public sector.</p>
             <p>A certificate is a quality mark. Used well, it strengthens market position and makes internal processes more efficient. We tailor our services so that products and services meet the relevant standard requirements.</p>

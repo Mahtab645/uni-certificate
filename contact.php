@@ -186,6 +186,8 @@ include __DIR__ . '/header.php';
 ?>
 
 <section class="inner-hero">
+    <img class="hero-media" src="<?php echo $baseUrl; ?>/images/careers-culture.jpg" alt="Career and contact at IFTA AG">
+    <div class="hero-overlay"></div>
     <div class="container">
         <p class="hero-kicker">Career and contact</p>
         <h1>Get in touch with us.</h1>

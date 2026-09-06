@@ -11,6 +11,8 @@ $index = 1;
 ?>
 
 <section class="inner-hero">
+    <img class="hero-media" src="<?php echo $baseUrl; ?>/images/quality-forge.jpg" alt="System certification services">
+    <div class="hero-overlay"></div>
     <div class="container">
         <p class="hero-kicker">System certification</p>
         <h1>Certification services for management systems.</h1>

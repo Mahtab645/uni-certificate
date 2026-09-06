@@ -39,6 +39,8 @@ include dirname(__DIR__) . '/header.php';
 ?>
 
 <section class="inner-hero">
+    <img class="hero-media" src="<?php echo $baseUrl; ?>/images/quality-testing.jpg" alt="">
+    <div class="hero-overlay"></div>
     <div class="container">
         <p class="hero-kicker"><?php echo htmlspecialchars($standard['code'], ENT_QUOTES, 'UTF-8'); ?></p>
         <h1><?php echo htmlspecialchars($standard['title'], ENT_QUOTES, 'UTF-8'); ?></h1>

@@ -5,6 +5,8 @@ include __DIR__ . '/header.php';
 ?>
 
 <section class="hero">
+    <img class="hero-media" src="<?php echo $baseUrl; ?>/images/hero.jpg" alt="Independent certification work at IFTA AG">
+    <div class="hero-overlay"></div>
     <div class="container">
         <div class="hero-content">
             <p class="hero-kicker">Welcome to IFTA AG</p>
@@ -37,11 +39,12 @@ include __DIR__ . '/header.php';
 
 <section class="home-intro">
     <div class="container home-intro-grid">
-        <div class="home-intro-title">
+        <figure class="media-figure">
+            <img src="<?php echo $baseUrl; ?>/images/about-who-we-are.png" alt="IFTA AG team and certification work">
+        </figure>
+        <div class="home-intro-copy">
             <p class="section-kicker">IFTA AG</p>
             <h2>Your international certification service</h2>
-        </div>
-        <div class="home-intro-copy">
             <p>We carry out audit, certification and surveillance services worldwide. Independence, objectivity and close trust with our clients are central to how we work.</p>
             <p>All conformity assessment activities are performed under the IFTA AG name and are regularly assessed against recognized accreditation requirements. That keeps quality and security at a consistently high level.</p>
             <p>Through continuous development, trained personnel and practical procedures, we create usable solutions for your organization — not paperwork for its own sake.</p>
@@ -55,27 +58,21 @@ include __DIR__ . '/header.php';
             <p class="section-kicker">Services</p>
             <h2>Our certification processes</h2>
         </div>
-        <div class="feature-rows">
-            <article class="feature-row">
-                <span class="feature-num">01</span>
-                <div>
-                    <h3>Professional and efficient implementation</h3>
-                    <p>We implement your company audit professionally, including audit duration according to the applicable rules. At first contact we explain the requirements of the system we recommend.</p>
-                </div>
+        <div class="photo-grid">
+            <article class="photo-card">
+                <img src="<?php echo $baseUrl; ?>/images/quality-testing.jpg" alt="Professional audit implementation">
+                <h3>Professional implementation</h3>
+                <p>We implement your company audit professionally, including audit duration according to the applicable rules.</p>
             </article>
-            <article class="feature-row">
-                <span class="feature-num">02</span>
-                <div>
-                    <h3>The certification procedure</h3>
-                    <p>Clear, efficient processes from application to certificate decision — so that the needs and expectations of our clients are met in a defined procedure.</p>
-                </div>
+            <article class="photo-card">
+                <img src="<?php echo $baseUrl; ?>/images/quality-forge.jpg" alt="Certification procedure">
+                <h3>The certification procedure</h3>
+                <p>Clear, efficient processes from application to certificate decision for the needs of our clients.</p>
             </article>
-            <article class="feature-row">
-                <span class="feature-num">03</span>
-                <div>
-                    <h3>How a procedure runs</h3>
-                    <p>From pre-audit through stage audits to surveillance and recertification — professional methods with a consistent quality standard.</p>
-                </div>
+            <article class="photo-card">
+                <img src="<?php echo $baseUrl; ?>/images/jobs-card.jpg" alt="How a certification procedure runs">
+                <h3>How a procedure runs</h3>
+                <p>From pre-audit through stage audits to surveillance and recertification.</p>
             </article>
         </div>
         <div class="page-cta-row">
@@ -105,6 +102,9 @@ include __DIR__ . '/header.php';
 
 <section class="inner-section" id="contact">
     <div class="container contact-layout">
+        <figure class="media-figure">
+            <img src="<?php echo $baseUrl; ?>/images/careers-culture.jpg" alt="Contact the IFTA AG team in Berlin">
+        </figure>
         <div>
             <p class="section-kicker">Contact</p>
             <h2>Get in touch with us</h2>
@@ -123,10 +123,10 @@ include __DIR__ . '/header.php';
                     <p><a href="mailto:info@ifta-ag.de">info@ifta-ag.de</a></p>
                 </div>
             </div>
-        </div>
-        <div>
-            <a class="btn-olive" href="<?php echo $contactHref; ?>">Open contact form</a>
-            <a class="btn-outline-dark" href="<?php echo $contactHref; ?>#career" style="margin-left:8px;">Career application</a>
+            <div class="page-cta-row">
+                <a class="btn-olive" href="<?php echo $contactHref; ?>">Open contact form</a>
+                <a class="btn-outline-dark" href="<?php echo $contactHref; ?>#career">Career application</a>
+            </div>
         </div>
     </div>
 </section>

@@ -57,10 +57,10 @@ h4 {
 
 .container {
   width: 100%;
-  max-width: 1180px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding-left: 28px;
-  padding-right: 28px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 .section-kicker,
@@ -296,19 +296,42 @@ h4 {
 .inner-hero,
 .about-hero,
 .page-hero {
+  position: relative;
+  overflow: hidden;
   background: #fff;
   color: var(--ink);
-  padding: 72px 0 56px;
+  padding: 96px 0 80px;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
   border-bottom: 1px solid var(--line);
 }
 
-.hero-media,
+.hero-media {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .hero-overlay {
-  display: none;
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.82) 46%, rgba(255, 255, 255, 0.22) 100%);
+}
+
+.hero > .container,
+.inner-hero > .container {
+  position: relative;
+  z-index: 2;
 }
 
 .hero-content {
-  max-width: 760px;
+  max-width: 720px;
 }
 
 .hero-title,
@@ -565,11 +588,53 @@ h4 {
 
 .split-band-media img {
   width: 100%;
-  height: 320px;
+  height: 380px;
   object-fit: cover;
   display: block;
-  border-radius: 0;
   background: var(--fill);
+}
+
+.media-figure {
+  margin: 0;
+}
+
+.media-figure img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  background: var(--fill);
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.photo-card {
+  display: block;
+  color: inherit;
+  background: #fff;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  background: var(--fill);
+}
+
+.photo-card h3 {
+  margin: 16px 0 8px;
+  font-size: 22px;
+}
+
+.photo-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
 }
 
 .split-band-meta a {
@@ -973,7 +1038,8 @@ font {
   .split-band-inner,
   .feature-row,
   .std-row,
-  .process-step {
+  .process-step,
+  .photo-grid {
     grid-template-columns: 1fr;
   }
 
@@ -989,8 +1055,23 @@ font {
   }
 
   .container {
-    padding-left: 18px;
-    padding-right: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-figure img,
+  .split-band-media img {
+    height: 240px;
+  }
+
+  .hero,
+  .inner-hero {
+    min-height: 0;
+    padding: 48px 0 36px;
   }
 
   .standard-aside {
