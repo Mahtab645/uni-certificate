@@ -86,7 +86,7 @@ include __DIR__ . '/header.php';
     <div class="hero-overlay"></div>
     <div class="container">
         <p class="hero-kicker">Contact</p>
-        <h1>Get in touch with us.</h1>
+        <h1>Contact us.</h1>
         <p>Your questions and plans are important to us. Reach us by phone, email or the form below.</p>
     </div>
 </section>

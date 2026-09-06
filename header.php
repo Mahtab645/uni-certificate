@@ -42,6 +42,16 @@ $navItems = [
     ['label' => 'Contact', 'href' => $contactHref, 'file' => 'contact.php'],
     ['label' => 'Career', 'href' => $careersHref, 'file' => 'careers.php'],
 ];
+$navLeft = array_slice($navItems, 0, 3);
+$navRight = array_slice($navItems, 3);
+
+if (!function_exists('ifta_nav_active')) {
+    function ifta_nav_active($item, $currentPage, $isCertificationNav)
+    {
+        return $currentPage === $item['file']
+            || ($item['file'] === 'system-certification.php' && $isCertificationNav);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,7 +96,7 @@ $navItems = [
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo $baseUrl; ?>/css/style.css?v=white5">
+    <link rel="stylesheet" href="<?php echo $baseUrl; ?>/css/style.css?v=white8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 </head>
 <body class="<?php echo $isHome ? 'is-home' : 'is-inner'; ?>">
@@ -104,24 +114,29 @@ $navItems = [
         </div>
     </div>
     <div class="container header-inner">
+        <nav class="header-nav header-nav-left" aria-label="Primary left">
+            <ul class="header-menu">
+                <?php foreach ($navLeft as $item): ?>
+                <li class="nav-item">
+                    <a class="nav-link<?php echo ifta_nav_active($item, $currentPage, $isCertificationNav) ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8'); ?></a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </nav>
+
         <a class="header-logo notranslate" href="<?php echo $baseUrl; ?>/index.php">
             <img src="<?php echo $baseUrl; ?>/images/logo.png" alt="IFTA AG — Naturally. For the future.">
         </a>
 
-        <div class="header-nav-wrap">
-            <nav class="header-nav" aria-label="Primary">
-                <ul class="header-menu">
-                    <?php foreach ($navItems as $item): ?>
-                    <li class="nav-item">
-                        <a class="nav-link<?php echo ($currentPage === $item['file'] || ($item['file'] === 'system-certification.php' && $isCertificationNav)) ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8'); ?></a>
-                    </li>
-                    <?php endforeach; ?>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <a class="header-cta" href="<?php echo $contactHref; ?>">Get in touch</a>
-            </div>
-        </div>
+        <nav class="header-nav header-nav-right" aria-label="Primary right">
+            <ul class="header-menu">
+                <?php foreach ($navRight as $item): ?>
+                <li class="nav-item">
+                    <a class="nav-link<?php echo ifta_nav_active($item, $currentPage, $isCertificationNav) ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8'); ?></a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </nav>
 
         <button class="navbar-toggler" type="button" id="navToggle" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -144,12 +159,9 @@ $navItems = [
     <ul class="header-menu navbar-nav">
         <?php foreach ($navItems as $item): ?>
         <li class="nav-item">
-            <a class="nav-link<?php echo ($currentPage === $item['file'] || ($item['file'] === 'system-certification.php' && $isCertificationNav)) ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8'); ?></a>
+            <a class="nav-link<?php echo ifta_nav_active($item, $currentPage, $isCertificationNav) ? ' active' : ''; ?>" href="<?php echo htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8'); ?></a>
         </li>
         <?php endforeach; ?>
-        <li class="nav-item">
-            <a class="header-cta" href="<?php echo $contactHref; ?>">Get in touch</a>
-        </li>
     </ul>
 </div>
 <div class="nav-backdrop" id="navBackdrop" hidden></div>

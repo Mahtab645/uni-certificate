@@ -107,7 +107,7 @@ include __DIR__ . '/header.php';
         </figure>
         <div>
             <p class="section-kicker">Contact</p>
-            <h2>Get in touch with us</h2>
+            <h2>Contact us</h2>
             <p>Your questions and plans are important to us. Complete the fields and describe your request so we can assist you quickly.</p>
             <div class="contact-details" style="margin-top:28px;">
                 <div class="contact-detail">
